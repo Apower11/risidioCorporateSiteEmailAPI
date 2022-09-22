@@ -70,7 +70,7 @@ app.post("/contact", (req, res) => {
 app.post("/subscribe", (req, res) => {
     const mailOptions = {
         from: process.env.A1,
-        to: process.env.A4,
+        to: process.env.A3,
         subject: `${req.body.name} has chosen to subscribe to Risidio's Community!`,
         text: `${req.body.name} has chosen to subscribe to Risidio's Community!`,
         html: `<div style="margin: 20px; text-align: left; border: solid 1px grey; border-radius: 5px; padding: 20px;">

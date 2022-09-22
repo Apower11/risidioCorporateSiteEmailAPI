@@ -71,7 +71,7 @@ transporter.verify((error) => {
   app.post("/subscribe", (req,res)=>{
         const mailOptions = {
           from: process.env.A1, // sender address (who sends)
-          to: process.env.A4, // list of receivers (who receives)
+          to: process.env.A3, // list of receivers (who receives)
           subject: `${req.body.name} has chosen to subscribe to Risidio's Community!`, // Subject line
           text: `${req.body.name} has chosen to subscribe to Risidio's Community!`, // plaintext body.contact
           html: `<div style="margin: 20px; text-align: left; border: solid 1px grey; border-radius: 5px; padding: 20px;">
