@@ -65,7 +65,37 @@ transporter.verify((error) => {
             }
         });
       }
+      
   )
+
+  app.post("/subscribe", (req,res)=>{
+        const mailOptions = {
+          from: process.env.A1, // sender address (who sends)
+          to: process.env.A4, // list of receivers (who receives)
+          subject: `${req.body.name} has chosen to subscribe to Risidio's Community!`, // Subject line
+          text: `${req.body.name} has chosen to subscribe to Risidio's Community!`, // plaintext body.contact
+          html: `<div style="margin: 20px; text-align: left; border: solid 1px grey; border-radius: 5px; padding: 20px;">
+              <h3 style="text-align: center;">You recieved a new subscription from your Risidio Form </h3>
+              <hr style="margin: 20px; color: grey;"/>
+              <br/>
+              <h3>Name:</h3>
+              <p>${req.body.name}</p>
+              <h3>Email:</h3>
+              <p>${req.body.email}</p>
+            </div>` // html body
+        };
+    
+        // send mail with defined transport object
+        transporter.sendMail(mailOptions, function(error, info){
+            if(error){
+              // console.log(error);
+              res.json({status: 'Request Failed', emailSent: false})
+            } else {
+              console.log('Message sent: ' + info.response);
+              res.json({ status: "Email sent", emailSent: true });
+            }
+        });
+      })
 
 const port = process.env.PORT || 5000
 
